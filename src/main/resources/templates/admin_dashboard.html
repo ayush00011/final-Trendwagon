@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" th:href="@{/assets/images/logo.png}">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/assets/css/admin_dashboard_styles.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/toast.css}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+                <img th:src="@{/assets/images/logo.png}" alt="TrendWagon Logo" class="img-fluid me-2" style="max-width: 250px;">
+            </a>
+            <div class="d-flex">
+                <button class="btn btn-primary me-2" id="add-item-btn" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
+                <a th:href="@{/orders}" class="btn btn-secondary me-2">View Orders</a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle me-2"></i> Account
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item text-danger" id="signout-button">Sign Out</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Products Section -->
+<section id="products" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Manage Products</h2>
+        <div class="row" id="product-grid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+        <div id="no-results" class="text-center mt-4" style="display: none;">
+            <h5>No Products Found</h5>
+        </div>
+    </div>
+</section>
+
+    
+    
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color:gold; color: black;">
+        <div class="container5">
+            <p>&copy; 2025 TrendWagon. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    
+    <!-- Add Item Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addItemModalLabel">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-product-form">
+                        <div class="mb-3">
+                            <label for="product-name" class="form-label">Product Name</label>
+                            <input type="text" id="product-name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-description" class="form-label">Description</label>
+                            <textarea id="product-description" class="form-control" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-price" class="form-label">Price</label>
+                            <input type="number" id="product-price" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-quantity" class="form-label">Quantity Available</label>
+                            <input type="number" id="product-quantity" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-image" class="form-label">Product Image</label>
+                            <input type="file" id="product-image" class="form-control" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <!-- Update Product Modal -->
+<div class="modal fade" id="updateItemModal" tabindex="-1" aria-labelledby="updateItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">Update Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="update-product-form">
+                    <input type="hidden" id="update-product-id">
+                    
+                    <div class="mb-3">
+                        <label for="update-product-name" class="form-label text-dark">Product Name</label>
+                        <input type="text" class="form-control" id="update-product-name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="update-product-description" class="form-label text-dark">Description</label>
+                        <textarea class="form-control" id="update-product-description" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="update-product-price" class="form-label text-dark">Price (₹)</label>
+                        <input type="number" class="form-control" id="update-product-price" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="update-product-quantity" class="form-label text-dark">Quantity</label>
+                        <input type="number" class="form-control" id="update-product-quantity" required>
+                    </div>
+
+                    <!-- Current Product Image Preview -->
+                    <div class="mb-3 text-center">
+                        <label class="form-label text-dark">Current Image</label>
+                        <img id="current-product-image" src="" class="img-fluid rounded" style="max-height: 150px; display: none;">
+                    </div>
+
+                    <!-- Upload New Image -->
+                    <div class="mb-3">
+                        <label for="update-product-image" class="form-label text-dark">Update Image</label>
+                        <input type="file" class="form-control" id="update-product-image" accept="image/*">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="change-password-form">
+                        <div class="mb-3">
+                            <label for="current-password" class="form-label">Current Password</label>
+                            <input type="password" id="current-password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input type="password" id="new-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <!-- Sign-Out Toast -->
+    <div id="signout-toast" class="toast align-items-center text-bg-light border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="bi bi-check-circle-fill me-2 text-success"></i>
+                You have been signed out successfully.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+    
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/js/admin_dashboard_scripts.js}"></script>
+</body>
+</html>

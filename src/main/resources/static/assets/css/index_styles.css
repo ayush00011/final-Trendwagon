@@ -1,0 +1,269 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Light beige background */
+    overflow-x: hidden; 
+    color: #333; /* General text color */
+}
+
+/* Carousel */
+#topCarousel {
+    margin-bottom: 20px;
+}
+.carousel-inner img {
+    max-height: 500px; /* Adjust height as needed */
+    object-fit: cover;
+    /* object-fit: contain; /*Ensures the entire image fits within the container */
+    width: 100%; 
+    filter: brightness(90%)
+}
+
+/* Carousel Overlay */
+.carousel-overlay {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* Adjust carousel caption text */
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+
+
+/* Search Bar */
+.search-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1010;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 10px 0; /* Added padding for better spacing */
+}
+
+.search-bar form {
+    max-width: 90%; /* Ensure the form is responsive */
+    display: flex;
+    gap: 10px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    border-radius: 25px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+    border-color: #f7cf44; /* Golden focus border */
+    outline: none;
+}
+
+.search-bar button {
+    border-radius: 25px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #f7cf44;
+    color: black;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+    background-color: #f5b905;
+    color: black;
+}.container4{
+    background-color: black;
+    color: gold;
+}
+.text-center{
+    background-color: black;
+    color: gold;
+}
+
+
+/* Product Cards */
+.product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card h5 {
+    font-weight: bold; /* Makes the title bold */
+    font-size: 1.25rem; /* Optional: Adjust font size */
+    margin-bottom: 0.5rem; /* Optional: Add spacing below title */
+    color: #333; /* Optional: Set a dark color */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.product-card img {
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    width: 100%;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #f7cf44;
+    color: black;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #f5b905;
+    color: black;
+}
+
+.btn-secondary {
+    background-color: #ddd;
+    color: black;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #ccc;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #f7cf44; /* Golden yellow */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black !important;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.navbar .navbar-nav {
+    flex-wrap: nowrap;
+}
+
+.navbar .nav-item {
+    margin-left: 10px;
+}
+
+.navbar .nav-link {
+    color: black !important;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #000;
+    transform: scale(1.1); /* Slight zoom effect */
+    text-decoration: underline;
+}
+
+.navbar .nav-link.active {
+    font-weight: bold;
+    color: #f7cf44; /* Golden color for active link */
+}
+
+/* Icons in Navbar */
+.nav-link i {
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    z-index: 1020;
+    position: absolute;
+    min-width: 180px;
+    max-width: 220px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
+}
+
+.dropdown-item {
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item.text-danger {
+    color: red;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #ffe4e1;
+    color: darkred;
+}
+
+/* Header */
+header {
+    background-color: #ffd700; /* Golden color */
+    color: black;
+    text-align: center;
+    padding: 2rem 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-bar form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar .navbar-collapse {
+        justify-content: flex-end;
+    }
+}

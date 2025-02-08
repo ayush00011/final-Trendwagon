@@ -1,0 +1,154 @@
+/* General Styling for Cart Page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8; /* Slightly lighter background */
+    margin: 0;
+    padding: 0;
+}
+
+.cart {
+    padding: 40px 0;
+}
+
+#cart-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+#cart-table th,
+#cart-table td {
+    vertical-align: middle;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+#cart-table th {
+    background-color: #f7cf44; /* Golden header */
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#cart-table td {
+    text-align: center;
+}
+
+#total-price {
+    font-size: 1.6rem; /* Slightly larger font */
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+/* Empty Cart Message Styling */
+#empty-cart-message h5 {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+#empty-cart-message a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #d4a417;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#empty-cart-message a:hover {
+    background-color: #b39214;
+}
+
+/* Checkout Button Styling */
+#checkout-button {
+    background-color: #d4a417;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#checkout-button:hover {
+    background-color: #b39214;
+    transform: scale(1.05); /* Slight hover scale effect */
+    color: #fff;
+}
+
+/* General Styling for Navbar Links */
+.navbar-nav .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+/* Hover Effect for Navbar Links */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #f7cf44; /* Golden hover color */
+    text-decoration: none;
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Home Link Hover State */
+.navbar-nav .nav-item .nav-link[href="index.html"]:hover {
+    color: #f7cf44;
+    text-decoration: none;
+}
+
+/* Sign Out Button Hover State */
+.navbar-nav .nav-item .nav-link#signout-button:hover {
+    background-color: #b01e1e; /* Old red color */
+    color: #ffffff !important; /* White text */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    transform: scale(1.05); /* Slight hover scale effect */
+}
+/* Footer */
+footer {
+    background-color: #2c2c2c; /* Darker footer for emphasis */
+    color: #ffffff; /* Light text for contrast */
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #cart-table th,
+    #cart-table td {
+        padding: 10px;
+    }
+
+    #checkout-button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    #empty-cart-message h5 {
+        font-size: 1rem;
+    }
+
+    #empty-cart-message a {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+}

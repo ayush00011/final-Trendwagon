@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendWagon - Your Trendy Store</title>
+    <link rel="icon" type="image/png" th:href="@{/assets/images/logo.png}">
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/assets/css/index_styles.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/toast.css}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{/assets/images/logo.png}" alt="TrendWagon Logo" class="img-fluid me-2" style="max-width: 250px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="auth-section">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/cart}"><i class="bi bi-cart-fill me-2"></i>Cart <span class="badge bg-danger ms-2" style="display: none;">0</span></a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/signup}"><i class="bi bi-person-plus-fill me-2"></i>SignUp</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/signin}"><i class="bi bi-box-arrow-in-right me-2"></i>SignIn</a></li>
+                    <li class="nav-item dropdown d-none" id="user-dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle me-2"></i>
+        <span id="user-name"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" th:href="@{/account}">Account</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button class="dropdown-item text-danger" id="signout-button">Sign Out</button></li>
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Search Bar Section -->
+    <div class="search-bar bg-light py-3">
+        <div class="container">
+            <form class="d-flex justify-content-center mx-auto" id="search-form" style="max-width: 100%;">
+                <input class="form-control me-2" type="search" placeholder="Search for products, categories, and more..." id="search-input" aria-label="Search">
+                <button class="btn btn-outline-primary d-flex align-items-center px-4" type="submit">
+                    <i class="bi bi-search me-2"></i>Search
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="text-center py-5">
+        <div class="container">
+            <h1>Welcome to TrendWagon</h1>
+            <p class="lead" style="color: azure;">Your one-stop shop for trending products!</p>
+        </div>
+    </header>
+<!-- Carousel Section -->
+    <div id="topCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="false">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#topCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#topCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#topCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#topCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#topCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="@{/assets/images/img10.jpg}" class="d-block w-100 img-fluid" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-overlay">
+                        <h5 class="text-white">Discover Amazing Products</h5>
+                        <p class="text-white">Shop from a variety of trendy collections.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/assets/images/banner2.jpg}" class="d-block w-100 img-fluid" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-overlay">
+                        <h5 class="text-white">Exclusive Offers</h5>
+                        <p class="text-white">Grab the best deals before they're gone!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/assets/images/banner3.jpg}" class="d-block w-100 img-fluid" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-overlay">
+                        <h5 class="text-white">New Arrivals</h5>
+                        <p class="text-white">Check out our latest collections today.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/assets/images/img11.jpg}" class="d-block w-100 img-fluid" alt="Slide 4">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-overlay">
+                        <h5 class="text-white">Great Deal</h5>
+                        <p class="text-white">Wear your comfort.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/assets/images/air2.png}" class="d-block w-100 img-fluid" alt="Slide 5">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-overlay">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shifting Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#topCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#topCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+
+    <!-- Products Section -->
+    <section id="products" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Products</h2>
+            <div class="row" id="product-container">
+                <!-- Products will be loaded dynamically here -->
+            </div>
+            <div id="no-results" class="text-center mt-4" style="display: none;">
+                <h5>No Products Found</h5>
+            </div>
+        </div>
+    </section>
+
+       <!-- Footer -->
+    <footer class="text-center py-3" style="background-color:gold; color: black;">
+        <div class="container5">
+            <p>&copy; 2025 TrendWagon. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="signout-toast" class="toast align-items-center text-bg-light border-0">
+            <div class="d-flex">
+                <div class="toast-body"><i class="bi bi-check-circle-fill me-2 text-success"></i> You have been signed out successfully.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+        <div id="add-to-cart-toast" class="toast align-items-center text-bg-light border-0">
+            <div class="d-flex">
+                <div class="toast-body"><i class="bi bi-cart-check-fill me-2 text-success"></i> Item added to cart.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/js/index_scripts.js}"></script>
+</body>
+</html>

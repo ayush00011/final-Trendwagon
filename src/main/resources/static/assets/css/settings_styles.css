@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Softer neutral grey background */
+    color: #2c2c2c; /* Balanced dark text color */
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #d4a417; /* Muted brand color for links */
+}
+
+a:hover {
+    color: #c29510; /* Slightly darker on hover */
+}
+
+/*  Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    background-color: #ffffff; /* Clean white navbar */
+}
+/* General Styling for Navbar Links */
+.navbar-nav .nav-item .nav-link {
+    display: flex; /* Align icon and text horizontally */
+    align-items: center; /* Vertically align icon and text */
+    justify-content: center; /* Center the content */
+    background-color: transparent; /* No background by default */
+    border: none; /* Remove border for buttons */
+    color: #000; /* Default black text */
+    font-weight: bold; /* Bold for emphasis */
+    cursor: pointer; /* Pointer cursor for links and buttons */
+    padding: 10px 15px; /* Spacing for clickable area */
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Home Link Hover State */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #f7cf44 !important; /* Golden color on hover */
+    text-decoration: none; /* No underline */
+    transform: scale(1.05); /* Slight hover effect */
+}
+
+.nav-link i {
+    font-size: 2rem;
+    margin-right: 5px;
+}
+
+
+/* Sign Out Button Hover State */
+.navbar-nav .nav-item .nav-link#signout-button:hover {
+    background-color: #b01e1e; /* Old red color */
+    color: #ffffff !important; /* White text */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    transform: scale(1.05); /* Slight hover scale effect */
+}
+
+/* Account Section */
+.account {
+    padding: 50px 0; /* Spacious padding for better layout */
+}
+
+.account h2 {
+    color: #d4a417; /* Brand color for headings */
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Subtle emphasis */
+}
+
+.card {
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* Neutral white for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight depth for focus */
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: #2c2c2c; /* Balanced dark text for readability */
+    margin-bottom: 15px;
+}
+
+.list-group-item {
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #ececec; /* Subtle light grey for separation */
+}
+
+.list-group-item i {
+    color: #d4a417; /* Muted gold for icons */
+}
+
+.list-group-item:hover {
+    background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #d4a417; /* Muted brand color for primary buttons */
+    border: none;
+    color: #ffffff; /* White text for contrast */
+}
+
+.btn-primary:hover {
+    background-color: #c29510; /* Slightly darker muted gold on hover */
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #bbb; /* Neutral grey for secondary buttons */
+    border: none;
+    color: #2c2c2c; /* Dark text for readability */
+}
+
+.btn-secondary:hover {
+    background-color: #a6a6a6; /* Slightly darker grey on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #2c2c2c; /* Darker footer for emphasis */
+    color: #ffffff; /* Light text for contrast */
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .account {
+        padding: 30px 0;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Toast */
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}

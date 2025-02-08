@@ -1,0 +1,51 @@
+/* Toast Container */
+.toast-container {
+    position: fixed;
+    top: 1rem; /* Space from the top */
+    right: 1rem; /* Space from the right */
+    z-index: 1055; /* Slightly higher to ensure visibility over other elements */
+    width: auto; /* Consistent width for the toast */
+}
+
+/* Toast Body Icon */
+.toast-body i {
+    font-size: 1.5rem; /* Larger icon size for better visibility */
+    margin-right: 8px; /* Space between the icon and text */
+}
+
+/* Success Icon */
+.toast-body i.text-success {
+    color: #198754; /* Bootstrap success green (slightly darker) */
+}
+
+/* Error Icon */
+.toast-body i.text-danger {
+    color: #dc3545; /* Bootstrap danger red */
+}
+
+/* Toast Animation */
+.toast {
+    opacity: 0.95; /* Slightly transparent for modern look */
+    animation: fadeIn 0.5s ease-out, fadeOut 0.5s ease-in 4.5s; /* Custom fade in/out */
+}
+
+/* Keyframes for Toast */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 0.95;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0.95;
+    }
+    to {
+        opacity: 0;
+    }
+}
